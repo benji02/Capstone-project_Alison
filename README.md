@@ -6,7 +6,7 @@
     <img src="https://microbenotes.com/wp-content/uploads/2023/05/Alleles.jpg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Variants of <i>TP53</i> causing Breast Cancer</h3>
+<h3 align="center">Exploring the Oncogenic Impact of <i>TP53</i> Variants on Breast Cancer: A Comprehensive Analysis</h3>
 
   <p align="center">
     Project Overview
