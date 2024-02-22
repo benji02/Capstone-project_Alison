@@ -36,19 +36,12 @@
     <br/><b>Problem Statement: </b>
     <br/>In the realm of cancer research, accurately identifying mutations (also known as variants) from next-generation sequencing of tumor samples poses a significant challenge. Variants exhibit diverse characteristics within the dataset, and both biological and technical variability complicate the process for variant callers. Various metrics, such as sequencing depth around the variant, the count of reads supporting the reference or mutated allele, the quality associated with these reads, and the confidence level of the tools in making specific calls, are crucial for assessing variants. This project will specifically explore the utility of one such metric: Variant Allele Frequency (VAF), in addressing these challenges.
     <br/><b>Proposed Data Science strategy:</b>
-    <br/> ClinVar -> ClinVar submission from variant curation
+    <br/> 1. Prioritize TP53 variants based on their predicted functional impact (e.g., deleteriousness scores from computational tools), frequency in the dataset, and relevance to breast cancer pathogenesis.
+    <br/>2. Utilize machine learning algorithms, such as random forests or gradient boosting, to rank TP53 variants according to their likelihood of driving breast cancer progression or treatment response. 
     <br/><b>Impact of this solution:</b>
+    <br/>1. Improved Prioritization of Variants: Machine learning models can consider multiple features simultaneously, including variant type, allele frequency, and clinical data, to prioritize TP53 variants more accurately. This can help researchers focus their efforts on investigating variants most likely to be clinically relevant.
+    <br/>2. Identification of Biomarkers: By identifying TP53 variants associated with disease progression or treatment response, this approach can lead to the discovery of biomarkers that could be used for patient stratification, prognosis prediction, and treatment selection like Personalized Treatment Strategies.
     <br/><b>Description of the dataset:</b>
+    
   </p>
-    <br />
-  <p align="center">
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-  </p>
-</div>
+   
