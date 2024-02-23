@@ -26,6 +26,6 @@
     <br/>1. Improved Prioritization of Variants: Machine learning models can consider multiple features simultaneously, including variant type, allele frequency, and clinical data, to prioritize <i>TP53</i> variants more accurately. This can help researchers focus their efforts on investigating variants most likely to be clinically relevant.
     <br/>2. Identification of Biomarkers: By identifying <i>TP53</i> variants associated with disease progression or treatment response, this approach can lead to the discovery of biomarkers that could be used for patient stratification, prognosis prediction, and treatment selection like Personalized Treatment Strategies.
     <br/><b>Description of the dataset:</b>
-    
+    <br/>There are five different .csv files used in this project for now. This number could either increase or decrease depending on the path this project has to trace. This section will be updated with the project.
   </p>
    
