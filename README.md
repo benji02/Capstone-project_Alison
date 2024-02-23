@@ -27,5 +27,10 @@
     <br/>2. Identification of Biomarkers: By identifying <i>TP53</i> variants associated with disease progression or treatment response, this approach can lead to the discovery of biomarkers that could be used for patient stratification, prognosis prediction, and treatment selection like Personalized Treatment Strategies.
     <br/><b>Description of the dataset:</b>
     <br/>There are five different .csv files used in this project for now. This number could either increase or decrease depending on the path this project has to trace. This section will be updated with the project.
+    <br/>UMD_variants_US.csv
+    <br/>MutationView_r20.csv
+    <br/>FunctionDownload_r20.csv
+    <br/>TP53_status.csv
+    <br/>clinvar_conflicting.csv
   </p>
    
