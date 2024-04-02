@@ -54,8 +54,9 @@ For detailed information on TP53 mutations and their analysis, refer to the corr
     <br/>UMD_mutations_US.csv
   </p>
    
-<p>
-  ## Machine Learning Model: Random Forest with Cross-Validation and Grid Search
+<p align='left'>
+  
+### Machine Learning Model: Random Forest with Cross-Validation and Grid Search
 
 To address the classification task of TP53 variant pathogenicity, we employ a Random Forest model, a powerful ensemble learning technique that combines multiple decision trees to improve predictive performance. Random Forests are well-suited for this task due to their ability to handle complex datasets with high dimensionality and non-linear relationships between features.
 
