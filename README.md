@@ -6,7 +6,7 @@
     <img src="https://microbenotes.com/wp-content/uploads/2023/05/Alleles.jpg" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Exploring the Oncogenic Impact of <i>TP53</i> Variants and Classifying the Pathogenicity: A Comprehensive Analysis</h3>
+<h3 align="center">PathFinder: Unravelling <i>TP53</i> Variant Pathogenicityfor Clinical Insights</h3>
 
   <p align="center">
     Project Overview
