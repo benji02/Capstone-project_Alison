@@ -49,25 +49,23 @@
 ## Pathogenicity (Target Feature)
 
 - **Pathogenicity**: Standard terminology for TP53 variants (e.g., 'pathogenic', 'likely pathogenic', 'uncertain significance', 'likely benign').
-
-For detailed information on TP53 mutations and their analysis, refer to the corresponding publication and the TP53 Website.
-    <br/>UMD_mutations_US.csv
   </p>
+
+<p align="left">
+</br>
+For detailed information on TP53 mutations and their analysis, refer to the corresponding publication and the TP53 Website.
+<br/>Tumor variants in human tumor samples (data file) UMD_mutations_US.csv
+</br><u>https://tp53.isb-cgc.org/get_tp53data#get_som_mut</u>
+</p>
+
    
 <p align='justify'>
-  
-### Machine Learning Model: Random Forest with Cross-Validation and Grid Search
-
-To address the classification task of TP53 variant pathogenicity, we employ a Random Forest model, a powerful ensemble learning technique that combines multiple decision trees to improve predictive performance. Random Forests are well-suited for this task due to their ability to handle complex datasets with high dimensionality and non-linear relationships between features.
-
-### Cross-Validation
-
-Cross-validation is a crucial technique used to assess the generalization performance of our model. By splitting the dataset into multiple subsets and training the model on different combinations of these subsets, we can evaluate its performance across various data partitions. This helps us to mitigate issues such as overfitting and ensures that our model performs well on unseen data.
-
-### Grid Search for Hyperparameter Tuning
-
-Hyperparameters play a critical role in the performance of machine learning models. To optimize the performance of our Random Forest classifier, we utilize grid search, a technique that exhaustively searches through a specified subset of hyperparameters to identify the combination that yields the best performance. This iterative process helps us fine-tune the model's parameters, such as the number of trees in the forest, maximum depth of the trees, and the minimum number of samples required to split a node, among others.
-
-By leveraging cross-validation and grid search, we aim to build a robust and accurate classification model for predicting the pathogenicity of TP53 variants. This approach allows us to effectively utilize the available data and optimize the model's performance, ultimately contributing to our understanding of the oncogenic impact of TP53 variants and aiding in the development of personalized treatment strategies for cancer patients.
+  <b>Machine Learning Model: Random Forest with Cross-Validation and Grid Search</b>
+</br>To address the classification task of TP53 variant pathogenicity, we employ a Random Forest model, a powerful ensemble learning technique that combines multiple decision trees to improve predictive performance. Random Forests are well-suited for this task due to their ability to handle complex datasets with high dimensionality and non-linear relationships between features.
+</br><b>Cross-Validation</b>
+</br>Cross-validation is a crucial technique used to assess the generalization performance of our model. By splitting the dataset into multiple subsets and training the model on different combinations of these subsets, we can evaluate its performance across various data partitions. This helps us to mitigate issues such as overfitting and ensures that our model performs well on unseen data.
+</br><b>Grid Search for Hyperparameter Tuning</b>
+</br>Hyperparameters play a critical role in the performance of machine learning models. To optimize the performance of our Random Forest classifier, we utilize grid search, a technique that exhaustively searches through a specified subset of hyperparameters to identify the combination that yields the best performance. This iterative process helps us fine-tune the model's parameters, such as the number of trees in the forest, maximum depth of the trees, and the minimum number of samples required to split a node, among others.
+</br>By leveraging cross-validation and grid search, we aim to build a robust and accurate classification model for predicting the pathogenicity of TP53 variants. This approach allows us to effectively utilize the available data and optimize the model's performance, ultimately contributing to our understanding of the oncogenic impact of TP53 variants and aiding in the development of personalized treatment strategies for cancer patients.
 
 </p>
