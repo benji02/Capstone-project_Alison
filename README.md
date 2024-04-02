@@ -54,7 +54,7 @@ For detailed information on TP53 mutations and their analysis, refer to the corr
     <br/>UMD_mutations_US.csv
   </p>
    
-<p align='left'>
+<p align='justify'>
   
 ### Machine Learning Model: Random Forest with Cross-Validation and Grid Search
 
