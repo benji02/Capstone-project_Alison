@@ -63,7 +63,6 @@ def main():
     st.write(mutant_codon)
 
 
-    st.write(type(input_data))
     st.write(type(HG38_Start_int))
     st.write(type(mutant_codon))
     st.write(type(disease))
