@@ -67,6 +67,13 @@ def main():
         # Convert inputs to integers
         HG38_Start_int = int(HG38_Start)
         prediction = predict_pathogenicity(HG38_Start_int, mutant_codon, disease, variant_type)
+
+      
+        st.write(type(prediction))
+        st.write(type(input_data))
+        
+
+              
         st.write('Prediction:', prediction)
         if prediction == 1:
             st.write("This mutant codon is Pathogenic")
