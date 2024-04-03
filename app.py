@@ -87,7 +87,7 @@ if predict_button:
     HG38_Start_df.loc[0, 'HG38_Start'] = int(HG38_Start)
 
     Somatic_Stat_df = pd.DataFrame(columns=['Somatic_Stat'])
-    Somatic_Stat_df.loc[0, 'Somatic_Stat'] = int(Somatic_Stat)
+    Somatic_Stat_df.loc[0, 'Somatic_Stat'] = Somatic_Stat
 
     Tumor_Repetition_df = pd.DataFrame(columns=['Tumor_Repetition'])
     Tumor_Repetition_df.loc[0, 'Tumor_Repetition'] = int(Tumor_Repetition)
