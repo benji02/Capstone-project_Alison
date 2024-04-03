@@ -84,7 +84,9 @@ if predict_button:
 
     input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df], axis=1)
     
+    st.write(input_data.shape)
     st.write(input_data)
+    
 
     prediction = model.predict(input_data)
 
