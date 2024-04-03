@@ -44,6 +44,16 @@ def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     st.dataframe(input_data)
     st.write("Shape of input_data:", input_data.shape)  # Print the shape of input_data
     st.write("Data type of input_data:", input_data.dtypes)  # Print the data type of input_data
+
+    st.write(type(prediction))
+    st.write(type(input_data))
+  
+    st.write(type(prediction))
+    st.write(type(input_data))
+    st.write(type(HG38_Start_int))
+    st.write(type(mutant_codon))
+    st.write(type(disease))
+    st.write(type(variant_type))
     
     # Make the prediction
     prediction = model.predict(input_data)
@@ -72,15 +82,7 @@ def main():
         prediction = predict_pathogenicity(HG38_Start_int, mutant_codon, disease, variant_type)
 
       
-        st.write(type(prediction))
-        st.write(type(input_data))
-      
-        st.write(type(prediction))
-        st.write(type(input_data))
-        st.write(type(HG38_Start_int))
-        st.write(type(mutant_codon))
-        st.write(type(disease))
-        st.write(type(variant_type))
+
 
               
         st.write('Prediction:', prediction)
