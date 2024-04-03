@@ -37,26 +37,22 @@ def generate_encoded_df(label, options):
 
 
 
-# Function to predict pathogenicity
-def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
+# # Function to predict pathogenicity
+# def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
   
-    # Prepare input data with the user-selected values
-    input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df], axis=1)
+#     # Prepare input data with the user-selected values
+#     input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df], axis=1)
     
     
-    # Check columns of the DataFrame
-    print("Columns of input_data:", input_data.columns)
-    
+#     # Check columns of the DataFrame
+#     print("Columns of input_data:", input_data.columns)
 
+#     st.write("Shape of input_data:", input_data.shape)  # Print the shape of input_data
+#     st.write("Data type of input_data:", input_data.dtypes)  # Print the data type of input_data
 
-    st.write("Shape of input_data:", input_data.shape)  # Print the shape of input_data
-    st.write("Data type of input_data:", input_data.dtypes)  # Print the data type of input_data
-
-  
-    
-    # Make the prediction
-    prediction = model.predict(input_data)
-    return prediction
+#     # Make the prediction
+#     prediction = model.predict(input_data)
+#     return prediction
 
 
 
@@ -73,19 +69,24 @@ disease_df = generate_encoded_df('Select Disease:', diseases)
 variant_type_df = generate_encoded_df('Select Variant Type:', variant_types)
 
 
-
+predict_button = st.button('Predict', key='predict_button')
 
 
 # Make prediction when the 'Predict' button is clicked
-if st.button('Predict'):
+if predict_button:
+
     # Convert inputs to integers
-    HG38_Start_df = pd.DataFrame(['HG38_Start'], [int(HG38_Start)])
+    HG38_Start_df = pd.DataFrame([int(HG38_Start)], columns='HG38_Start')
     print(HG38_Start_df)
     print(int(HG38_Start))
     print(type(HG38_Start)) 
     print(type(HG38_Start_df))
   
-    prediction = predict_pathogenicity(HG38_Start_df, mutant_codon_df, disease_df, variant_type_df)
+
+    input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df], axis=1)
+
+
+    prediction = model.predict(input_data)
 
     
 
