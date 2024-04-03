@@ -40,17 +40,13 @@ def generate_encoded_df(label, options):
 # Function to predict pathogenicity
 def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     # Prepare input data with the user-selected values
-    input_data = pd.concat([genre_df, platform_brand_df, platform_type_df, name, publisher, developer], axis=1)(columns=['HG38_Start'] + ['Mutant_Codon_' + mutant_codon for mutant_codon in mutant_codons] + 
-                              ['Disease_' + disease for disease in diseases] + 
-                              ['Variant_Type_' + variant_type for variant_type in variant_types])
+    input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df], axis=1)
     
     
     # Check columns of the DataFrame
     print("Columns of input_data:", input_data.columns)
     
 
-    print("Input row:", input_row)  # Add this line to print out the input_row
-    input_data.loc[0] = input_row
 
     st.dataframe(input_data)
     st.write("Shape of input_data:", input_data.shape)  # Print the shape of input_data
@@ -68,47 +64,43 @@ def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     return prediction
 
 
-# Main function to run the Streamlit app
-def main():
-    # Set page title
-    st.title('PathFinder: TP53 Variant Pathogenicity Predictor')
+
+# Set page title
+st.title('PathFinder: TP53 Variant Pathogenicity Predictor')
+
+# Add input fields for mutant codon, disease, variant type, HG38_Start, somatic_stat, and tumor_rep
+HG38_Start = st.text_input("Enter HG38 Start site:")
+HG38_Start_df = pd.DataFrame(['HG38_Start'], [int(HG38_Start)])
+
+                        
+mutant_codon_df = generate_encoded_df('Select Mutant Codon:', mutant_codons)
+disease_df = generate_encoded_df('Select Disease:', diseases)
+variant_type_df = generate_encoded_df('Select Variant Type:', variant_types)
+
+
+
+
+
+# Make prediction when the 'Predict' button is clicked
+if st.button('Predict'):
+    # Convert inputs to integers
+    HG38_Start_int = int(HG38_Start)
+    prediction = predict_pathogenicity(HG38_Start_df, mutant_codon_df, disease_df, variant_type_df)
+
     
-    # Add input fields for mutant codon, disease, variant type, HG38_Start, somatic_stat, and tumor_rep
-    HG38_Start = pd.Series([int(st.text_input("Enter HG38 Start site:"))]
-
-                           
-    mutant_codon_df = generate_encoded_df('Select Mutant Codon:', mutant_codons)
-    disease_df = generate_encoded_df('Select Disease:', diseases)
-    variant_type_df = generate_encoded_df('Select Variant Type:', variant_types)
 
 
-
-
-  
-    # Make prediction when the 'Predict' button is clicked
-    if st.button('Predict'):
-        # Convert inputs to integers
-        HG38_Start_int = int(HG38_Start)
-        prediction = predict_pathogenicity(HG38_Start_int_df, mutant_codon_df, disease_df, variant_type_df)
-
-      
-
-
-              
-        st.write('Prediction:', prediction)
-        if prediction == 1:
-            st.write("This mutant codon is Pathogenic")
-        elif prediction == 2:
-            st.write("This mutant codon is likely to be Pathogenic")
-        elif prediction == 3:
-            st.write("This mutant codon has uncertain significance")
-        elif prediction == 4:
-            st.write("This mutant codon is Benign")
-        else:
-            st.write("Unknown")
+            
+    st.write('Prediction:', prediction)
+    if prediction == 1:
+        st.write("This mutant codon is Pathogenic")
+    elif prediction == 2:
+        st.write("This mutant codon is likely to be Pathogenic")
+    elif prediction == 3:
+        st.write("This mutant codon has uncertain significance")
+    elif prediction == 4:
+        st.write("This mutant codon is Benign")
     else:
-        st.write('Please fill out the required fields to predict the pathogenicity')
-
-# Run the main function
-if __name__ == '__main__':
-    main()
+        st.write("Unknown")
+else:
+    st.write('Please fill out the required fields to predict the pathogenicity')
