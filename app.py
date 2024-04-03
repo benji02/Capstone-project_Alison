@@ -4,20 +4,20 @@ from joblib import load
 import numpy as np
 import boto3
 
+from io import BytesIO
+
+# Connect to your S3 bucket
 s3 = boto3.client('s3')
 
 # Specify the bucket name and the key (path to the file) of your joblib model file in S3
 bucket_name = 'my-s3-bucket-benji02'
 key = 'pipeline.joblib'
 
-# Specify the local file path where you want to save the downloaded model file
-local_file_path = 'local_model.joblib'
-
 # Download the model file from S3
-s3.download_file(bucket_name, key, local_file_path)
+response = s3.get_object(Bucket=bucket_name, Key=key)
 
-# Load the model using joblib
-model = load(local_file_path)
+# Load the model using joblib directly from the response content
+model = load(BytesIO(response['Body'].read()))
 
 
 # # Load the trained model
