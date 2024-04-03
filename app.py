@@ -24,19 +24,26 @@ variant_types = ['DEL', 'INS']
 # Function to predict pathogenicity
 def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     # Prepare input data with the user-selected values
-    input_data = pd.DataFrame(columns=['HG38_Start'] + mutant_codons + diseases + variant_types)
+    input_data = pd.DataFrame(columns=['HG38_Start'] + ['Mutant_Codon_' + mutant_codon for mutant_codon in mutant_codons] + 
+                              ['Disease_' + disease for disease in diseases] + 
+                              ['Variant_Type_' + variant_type for variant_type in variant_types])
+    
     
     # Check columns of the DataFrame
     print("Columns of input_data:", input_data.columns)
     
     # Set the selected features
     input_row = [HG38_Start] + \
-                [1 if codon == 'Mutant_Codon_' + mutant_codon else 0 for codon in mutant_codons] + \
-                [1 if d == 'Disease_' + disease else 0 for d in diseases] + \
-                [1 if v == 'Variant_Type_' + variant_type else 0 for v in variant_types] 
+                [1 if mc == mutant_codon else 0 for mc in mutant_codons] + \
+                [1 if d == disease else 0 for d in diseases] + \
+                [1 if vt == variant_type else 0 for vt in variant_types] 
 
     print("Input row:", input_row)  # Add this line to print out the input_row
     input_data.loc[0] = input_row
+
+    st.dataframe(input_data)
+    st.write("Shape of input_data:", input_data.shape)  # Print the shape of input_data
+    st.write("Data type of input_data:", input_data.dtypes)  # Print the data type of input_data
     
     # Make the prediction
     prediction = model.predict(input_data)
@@ -53,11 +60,26 @@ def main():
     mutant_codon = st.selectbox('Select Mutant Codon:', mutant_codons)
     disease = st.selectbox('Select Disease:', diseases, index=diseases.index('Breast carcinoma'))
     variant_type = st.selectbox('Select Variant Type:', variant_types)
+    st.write(mutant_codon)
     
     # Make prediction when the 'Predict' button is clicked
     if st.button('Predict'):
-        prediction = predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type)
+        # Convert inputs to integers
+        HG38_Start_int = int(HG38_Start)
+        prediction = predict_pathogenicity(HG38_Start_int, mutant_codon, disease, variant_type)
         st.write('Prediction:', prediction)
+        if prediction == 1:
+            st.write("This mutant codon is Pathogenic")
+        elif prediction == 2:
+            st.write("This mutant codon is likely to be Pathogenic")
+        elif prediction == 3:
+            st.write("This mutant codon has uncertain significance")
+        elif prediction == 4:
+            st.write("This mutant codon is Benign")
+        else:
+            st.write("Unknown")
+    else:
+        st.write('Please fill out the required fields to predict the pathogenicity')
 
 # Run the main function
 if __name__ == '__main__':
