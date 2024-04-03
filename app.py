@@ -70,7 +70,7 @@ st.title('PathFinder: TP53 Variant Pathogenicity Predictor')
 
 # Add input fields for mutant codon, disease, variant type, HG38_Start, somatic_stat, and tumor_rep
 HG38_Start = st.text_input("Enter HG38 Start site:")
-HG38_Start_df = pd.DataFrame(['HG38_Start'], [int(HG38_Start)])
+
 
                         
 mutant_codon_df = generate_encoded_df('Select Mutant Codon:', mutant_codons)
@@ -84,7 +84,8 @@ variant_type_df = generate_encoded_df('Select Variant Type:', variant_types)
 # Make prediction when the 'Predict' button is clicked
 if st.button('Predict'):
     # Convert inputs to integers
-    HG38_Start_int = int(HG38_Start)
+    HG38_Start_df = pd.DataFrame(['HG38_Start'], [int(HG38_Start)])
+  
     prediction = predict_pathogenicity(HG38_Start_df, mutant_codon_df, disease_df, variant_type_df)
 
     
