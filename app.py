@@ -20,7 +20,7 @@ diseases = ['B-Chronic lymphocytic leukemia', 'Bladder carcinoma', 'Breast carci
             'Pancreatic carcinoma']
 
 # List of Variant Types
-variant_types = ['DEL', 'INS', 'SNP']
+variant_types = ['DEL', 'INS']
 
 
 def generate_encoded_df(label, options, prefix):
@@ -66,8 +66,8 @@ st.title('PathFinder: TP53 Variant Pathogenicity Predictor')
 # Add input fields for mutant codon, disease, variant type, HG38_Start, somatic_stat, and tumor_rep
 HG38_Start = st.text_input("Enter HG38 Start site:")
 
-Somatic_Stat = st.text_input("Enter Somatic_Stat:")
-Tumor_Repetition = st.text_input("Enter Tumor_Repetition:")
+# Somatic_Stat = st.text_input("Enter Somatic_Stat:")
+# Tumor_Repetition = st.text_input("Enter Tumor_Repetition:")
 
                         
 mutant_codon_df = generate_encoded_df('Select Mutant Codon:', mutant_codons, 'Mutant_Codon_')
@@ -86,13 +86,13 @@ if predict_button:
     HG38_Start_df = pd.DataFrame(columns=['HG38_Start'])
     HG38_Start_df.loc[0, 'HG38_Start'] = int(HG38_Start)
 
-    Somatic_Stat_df = pd.DataFrame(columns=['Somatic_Stat'])
-    Somatic_Stat_df.loc[0, 'Somatic_Stat'] = Somatic_Stat
+    # Somatic_Stat_df = pd.DataFrame(columns=['Somatic_Stat'])
+    # Somatic_Stat_df.loc[0, 'Somatic_Stat'] = Somatic_Stat
 
-    Tumor_Repetition_df = pd.DataFrame(columns=['Tumor_Repetition'])
-    Tumor_Repetition_df.loc[0, 'Tumor_Repetition'] = int(Tumor_Repetition)
+    # Tumor_Repetition_df = pd.DataFrame(columns=['Tumor_Repetition'])
+    # Tumor_Repetition_df.loc[0, 'Tumor_Repetition'] = int(Tumor_Repetition)
 
-    input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df, Somatic_Stat_df, Tumor_Repetition_df], axis=1)
+    input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df], axis=1)
     
     st.write(input_data.shape)
     st.write(input_data)
