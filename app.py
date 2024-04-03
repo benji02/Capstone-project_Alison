@@ -80,10 +80,10 @@ variant_type_df = generate_encoded_df('Select Variant Type:', variant_types)
 if st.button('Predict'):
     # Convert inputs to integers
     HG38_Start_df = pd.DataFrame(['HG38_Start'], [int(HG38_Start)])
-    st.write(HG38_Start_df)
-    st.write(int(HG38_Start))
-    st.write(type(HG38_Start)) 
-    st.write(type(HG38_Start_df))
+    print(HG38_Start_df)
+    print(int(HG38_Start))
+    print(type(HG38_Start)) 
+    print(type(HG38_Start_df))
   
     prediction = predict_pathogenicity(HG38_Start_df, mutant_codon_df, disease_df, variant_type_df)
 
