@@ -21,10 +21,26 @@ diseases = ['B-Chronic lymphocytic leukemia', 'Bladder carcinoma', 'Breast carci
 # List of Variant Types
 variant_types = ['DEL', 'INS']
 
+
+def generate_encoded_df(label, options):
+    # UI input
+    selected_option = st.selectbox(label, options=options, key=label)
+
+    # Create DataFrame with dummy variables
+    encoded_df = pd.DataFrame(np.zeros((1, len(options))), columns=options)
+
+    # Set value for the selected option to 1
+    encoded_df.loc[0, selected_option] = 1
+
+    return encoded_df
+
+
+
+
 # Function to predict pathogenicity
 def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     # Prepare input data with the user-selected values
-    input_data = pd.DataFrame(columns=['HG38_Start'] + ['Mutant_Codon_' + mutant_codon for mutant_codon in mutant_codons] + 
+    input_data = pd.concat([genre_df, platform_brand_df, platform_type_df, name, publisher, developer], axis=1)(columns=['HG38_Start'] + ['Mutant_Codon_' + mutant_codon for mutant_codon in mutant_codons] + 
                               ['Disease_' + disease for disease in diseases] + 
                               ['Variant_Type_' + variant_type for variant_type in variant_types])
     
@@ -32,11 +48,6 @@ def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     # Check columns of the DataFrame
     print("Columns of input_data:", input_data.columns)
     
-    # Set the selected features
-    input_row = [HG38_Start] + \
-                [1 if mc == mutant_codon else 0 for mc in mutant_codons] + \
-                [1 if d == disease else 0 for d in diseases] + \
-                [1 if vt == variant_type else 0 for vt in variant_types] 
 
     print("Input row:", input_row)  # Add this line to print out the input_row
     input_data.loc[0] = input_row
@@ -47,7 +58,7 @@ def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
 
   
     # st.write(type(input_data))
-    st.write(type(HG38_Start_int))
+    # st.write(type(HG38_Start_int))
     st.write(type(mutant_codon))
     st.write(type(disease))
     st.write(type(variant_type))
@@ -63,11 +74,13 @@ def main():
     st.title('PathFinder: TP53 Variant Pathogenicity Predictor')
     
     # Add input fields for mutant codon, disease, variant type, HG38_Start, somatic_stat, and tumor_rep
-    HG38_Start = st.text_input("Enter HG38 Start site:")
-    mutant_codon = st.selectbox('Select Mutant Codon:', mutant_codons)
-    disease = st.selectbox('Select Disease:', diseases, index=diseases.index('Breast carcinoma'))
-    variant_type = st.selectbox('Select Variant Type:', variant_types)
-    st.write(mutant_codon)
+    HG38_Start = pd.Series([int(st.text_input("Enter HG38 Start site:"))]
+
+                           
+    mutant_codon_df = generate_encoded_df('Select Mutant Codon:', mutant_codons)
+    disease_df = generate_encoded_df('Select Disease:', diseases)
+    variant_type_df = generate_encoded_df('Select Variant Type:', variant_types)
+
 
 
 
@@ -76,7 +89,7 @@ def main():
     if st.button('Predict'):
         # Convert inputs to integers
         HG38_Start_int = int(HG38_Start)
-        prediction = predict_pathogenicity(HG38_Start_int, mutant_codon, disease, variant_type)
+        prediction = predict_pathogenicity(HG38_Start_int_df, mutant_codon_df, disease_df, variant_type_df)
 
       
 
