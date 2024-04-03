@@ -2,26 +2,10 @@ import streamlit as st
 import pandas as pd
 from joblib import load
 import numpy as np
-import boto3
-
-from io import BytesIO
-
-# Connect to your S3 bucket
-s3 = boto3.client('s3')
-
-# Specify the bucket name and the key (path to the file) of your joblib model file in S3
-bucket_name = 'my-s3-bucket-benji02'
-key = 'pipeline.joblib'
-
-# Download the model file from S3
-response = s3.get_object(Bucket=bucket_name, Key=key)
-
-# Load the model using joblib directly from the response content
-model = load(BytesIO(response['Body'].read()))
 
 
-# # Load the trained model
-# model = load('https://my-s3-bucket-benji02.s3.us-east-2.amazonaws.com/pipeline.joblib')  # Replace 'pipeline.joblib' with the path to your trained model file
+# Load the trained model
+model = load('pipeline.joblib')  # Replace 'pipeline.joblib' with the path to your trained model file
 
 # List of mutant codons
 mutant_codons = ['AAA', 'AAC', 'AAG', 'AAT', 'ACA', 'ACC', 'ACG', 'ACT', 'AGA', 'AGC', 'AGG', 'AGT', 'ATA', 'ATC', 'ATG', 
