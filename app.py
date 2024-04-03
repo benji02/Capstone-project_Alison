@@ -75,10 +75,10 @@ predict_button = st.button('Predict', key='predict_button')
 # Make prediction when the 'Predict' button is clicked
 if predict_button:
 
-    print(HG38_Start_df)
+    # print(HG38_Start_df)
     print(int(HG38_Start))
     print(type(HG38_Start)) 
-    print(type(HG38_Start_df))
+    # print(type(HG38_Start_df))
 
     # Convert inputs to integers
     HG38_Start_df = pd.DataFrame([int(HG38_Start)], columns='HG38_Start')
