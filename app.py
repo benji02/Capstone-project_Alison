@@ -23,7 +23,7 @@ diseases = ['B-Chronic lymphocytic leukemia', 'Bladder carcinoma', 'Breast carci
 variant_types = ['DEL', 'INS']
 
 
-def generate_encoded_df(label, options):
+def generate_encoded_df(label, options, prefix):
     # UI input
     selected_option = st.selectbox(label, options=options, key=label)
 
@@ -32,6 +32,9 @@ def generate_encoded_df(label, options):
 
     # Set value for the selected option to 1
     encoded_df.loc[0, selected_option] = 1
+
+    # Add prefix 'x0' to column names
+    encoded_df.columns = [prefix + col for col in encoded_df.columns]
 
     return encoded_df
 
@@ -65,9 +68,9 @@ HG38_Start = st.text_input("Enter HG38 Start site:")
 
 
                         
-mutant_codon_df = generate_encoded_df('Select Mutant Codon:', mutant_codons)
-disease_df = generate_encoded_df('Select Disease:', diseases)
-variant_type_df = generate_encoded_df('Select Variant Type:', variant_types)
+mutant_codon_df = generate_encoded_df('Select Mutant Codon:', mutant_codons, Mutant_Codon_)
+disease_df = generate_encoded_df('Select Disease:', diseases, Disease_)
+variant_type_df = generate_encoded_df('Select Variant Type:', variant_types, Variant_Type)
 
 
 predict_button = st.button('Predict', key='predict_button')
