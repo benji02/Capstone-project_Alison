@@ -61,7 +61,15 @@ def main():
     disease = st.selectbox('Select Disease:', diseases, index=diseases.index('Breast carcinoma'))
     variant_type = st.selectbox('Select Variant Type:', variant_types)
     st.write(mutant_codon)
-    
+
+    st.write(type(prediction))
+    st.write(type(input_data))
+    st.write(type(HG38_Start_int))
+    st.write(type(mutant_codon))
+    st.write(type(disease))
+    st.write(type(variant_type))
+
+  
     # Make prediction when the 'Predict' button is clicked
     if st.button('Predict'):
         # Convert inputs to integers
@@ -71,6 +79,7 @@ def main():
       
         st.write(type(prediction))
         st.write(type(input_data))
+      
         
 
               
