@@ -46,7 +46,7 @@ def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     st.write("Data type of input_data:", input_data.dtypes)  # Print the data type of input_data
 
   
-    st.write(type(input_data))
+    # st.write(type(input_data))
     st.write(type(HG38_Start_int))
     st.write(type(mutant_codon))
     st.write(type(disease))
