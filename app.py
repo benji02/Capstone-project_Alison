@@ -63,10 +63,6 @@ def main():
     st.write(mutant_codon)
 
 
-    st.write(type(HG38_Start_int))
-    st.write(type(mutant_codon))
-    st.write(type(disease))
-    st.write(type(variant_type))
 
   
     # Make prediction when the 'Predict' button is clicked
@@ -79,7 +75,12 @@ def main():
         st.write(type(prediction))
         st.write(type(input_data))
       
-        
+        st.write(type(prediction))
+        st.write(type(input_data))
+        st.write(type(HG38_Start_int))
+        st.write(type(mutant_codon))
+        st.write(type(disease))
+        st.write(type(variant_type))
 
               
         st.write('Prediction:', prediction)
