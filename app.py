@@ -62,7 +62,7 @@ def main():
     variant_type = st.selectbox('Select Variant Type:', variant_types)
     st.write(mutant_codon)
 
-    st.write(type(prediction))
+
     st.write(type(input_data))
     st.write(type(HG38_Start_int))
     st.write(type(mutant_codon))
