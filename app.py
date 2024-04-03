@@ -4,7 +4,7 @@ from joblib import load
 import numpy as np
 
 # Load the trained model
-model = load('c:\\Users\\aliva\\Downloads\\Capstone\\Sprint 3\\pipeline.joblib')  # Replace 'pipeline.joblib' with the path to your trained model file
+model = load('pipeline.joblib')  # Replace 'pipeline.joblib' with the path to your trained model file
 
 # List of mutant codons
 mutant_codons = ['AAA', 'AAC', 'AAG', 'AAT', 'ACA', 'ACC', 'ACG', 'ACT', 'AGA', 'AGC', 'AGG', 'AGT', 'ATA', 'ATC', 'ATG', 
