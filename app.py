@@ -39,6 +39,7 @@ def generate_encoded_df(label, options):
 
 # Function to predict pathogenicity
 def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
+  
     # Prepare input data with the user-selected values
     input_data = pd.concat([HG38_Start_df, mutant_codon_df, disease_df, variant_type_df], axis=1)
     
@@ -53,11 +54,6 @@ def predict_pathogenicity(HG38_Start, mutant_codon, disease, variant_type):
     st.write("Data type of input_data:", input_data.dtypes)  # Print the data type of input_data
 
   
-    # st.write(type(input_data))
-    # st.write(type(HG38_Start_int))
-    st.write(type(mutant_codon))
-    st.write(type(disease))
-    st.write(type(variant_type))
     
     # Make the prediction
     prediction = model.predict(input_data)
