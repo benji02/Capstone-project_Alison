@@ -20,7 +20,7 @@ diseases = ['B-Chronic lymphocytic leukemia', 'Bladder carcinoma', 'Breast carci
             'Pancreatic carcinoma']
 
 # List of Variant Types
-variant_types = ['DEL', 'INS']
+variant_types = ['DEL', 'INS', 'SNP']
 
 
 def generate_encoded_df(label, options, prefix):
